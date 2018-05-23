@@ -1,0 +1,19 @@
+<project>
+	<parent>
+		<artifactId>mypaint</artifactId>
+		<groupId>org.example.mypaint</groupId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>mypaint-ext</artifactId>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.example.mypaint</groupId>
+			<artifactId>mypaint-core</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+
+</project>
