@@ -4,6 +4,8 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.swt.graphics.Font;
+import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.layout.FillLayout;
@@ -73,16 +75,19 @@ final class DrawArea {
         var toolBar = new Composite(composite, SWT.NONE);
         toolBar.setLayoutData(new GridData(SWT.RIGHT, SWT.FILL, false, true));
         toolBar.setLayout(new GridLayout());
+        var font = new Font(this.shell.getDisplay(), new FontData("Arial", 18, SWT.NORMAL));
 
         for (var descriptor : this.descriptors) {
             var button = new Button(toolBar, SWT.RADIO);
             button.setText(descriptor.getName());
+            button.setFont(font);
             button.addSelectionListener(SelectionListener.widgetSelectedAdapter(e ->
                     this.currentFigure = descriptor.createFigure(this.shell)));
         }
 
         var clearButton = new Button(toolBar, SWT.PUSH);
         clearButton.setText("Clear");
+        clearButton.setFont(font);
         clearButton.setLayoutData(new GridData(SWT.FILL, SWT.BOTTOM, true, true));
         clearButton.addSelectionListener(SelectionListener.widgetSelectedAdapter(e -> {
             this.shapes.clear();
@@ -96,7 +101,7 @@ final class DrawArea {
         canvas.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 
         canvas.addPaintListener(e -> {
-            e.gc.setLineWidth(2);
+            e.gc.setLineWidth(3);
             for (var shape : this.shapes) {
                 shape.draw(e.gc);
             }
