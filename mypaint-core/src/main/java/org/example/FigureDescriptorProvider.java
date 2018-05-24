@@ -14,7 +14,7 @@ public interface FigureDescriptorProvider {
                 .load(FigureDescriptorProvider.class)
                 .stream()
                 .map(Provider::get)
-                .sorted(Comparator.comparingInt(provider -> provider instanceof BaseDescriptorProvider ? 0 : 1));
+                .sorted(Comparator.comparingInt(provider -> provider instanceof BaseFigureDescriptorProvider ? 0 : 1));
     }
 }
 

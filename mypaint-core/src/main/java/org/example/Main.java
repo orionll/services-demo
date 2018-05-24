@@ -24,7 +24,7 @@ public final class Main {
     public static void main(String[] args) {
         var display = new Display();
         var shell = new Shell(display);
-        shell.setSize(1100, 700);
+        shell.setSize(600, 400);
         shell.setLocation(300, 200);
         shell.setText("MyPaint");
         shell.setLayout(new FillLayout());

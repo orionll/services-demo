@@ -1,9 +1,8 @@
 package org.example;
 
-import java.util.List;
 import java.util.stream.Stream;
 
-public class BaseDescriptorProvider implements FigureDescriptorProvider {
+public class BaseFigureDescriptorProvider implements FigureDescriptorProvider {
 
     @Override
     public Stream<FigureDescriptor> getFigureDescriptors() {
