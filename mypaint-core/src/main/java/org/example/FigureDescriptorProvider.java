@@ -9,9 +9,9 @@ public interface FigureDescriptorProvider {
 
     Stream<FigureDescriptor> getFigureDescriptors();
 
-    static Stream<FigureDescriptorProvider> getProviders() {
+    static Stream<FigureDescriptorProvider> getProviders(ModuleLayer layer) {
         return ServiceLoader
-                .load(FigureDescriptorProvider.class)
+                .load(layer, FigureDescriptorProvider.class)
                 .stream()
                 .map(Provider::get)
                 .sorted(Comparator.comparingInt(provider -> provider instanceof BaseFigureDescriptorProvider ? 0 : 1));
