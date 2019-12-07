@@ -26,29 +26,17 @@
 	<build>
 		<plugins>
 			<plugin>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<version>1.8</version>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<configuration>
-							<target>
-								<echo message="Patching jar with main class"/>
-								<exec executable="${java.home}/bin/jar" failonerror="true">
-									<arg value="--main-class"/>
-									<arg value="${main.class}"/>
-									<arg value="--update"/>
-									<arg value="--file"/>
-									<arg value="${project.build.directory}/${project.artifactId}-${project.version}.jar"/>
-								</exec>
-							</target>
-						</configuration>
-						<goals>
-							<goal>run</goal>
-						</goals>
-					</execution>
-				</executions>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<mainClass>${main.class}</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
 			</plugin>
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
